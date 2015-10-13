@@ -1,0 +1,27 @@
+- Duck types are public interfaces that are not tied to any specific class.
+  They add flexibility to application by replacing costly dependencies on class with dependencies on messages.
+- Duck typed objects are defined more by their behavior than by their class.
+- Duck typping rely on belief, that if an object quacks like a duck and walks like a duck, then its class is immaterial, it's a duck.
+- If one object knows another's type, it knows to which messages that object can respond.
+- You are not limited to expecting an object to respond to just one interface.
+- Duck types have public interfaces, that must be explicit and well-documented.
+- Concrete code is easy to understand but costly to extend. Abstract code may initially seem more obscure but, once understood, is far easier to change. Duck type moves your code from more concrete to more abstract.
+- Polymorphism is state of having many forms.
+- Polymorphism can by used either to communicate or to intimidate.
+- Polymorphism in OOP refers to the ability of many different objects to respond to the same message.
+  Senders needn't to care about the class of receiver, because receivers supply their own specific version of the behavior.
+- A single message thus has many (poly) forms (morphs).
+- It's relatively easy to implement a duck type - the challenge is to notice that you need one.
+- Several common coding patterns indicate the presence of a hidden duck. You can repleace the following with ducks:
+  - Case statements that switch on class.
+  - kind_of?
+  - responds_to?.
+  Just as Demeter violations, this style of code is an indication that you are missing an object, one whose public interface you have not yet discovered.
+- When you see these code patterns, find a duck type, implement its interface where necessary, ane then trust those implementers to behave correctly.
+- When you create duck types you must write tests, that will also document thier public interfaces.
+- Core Ruby classes (e.g. Hash, Integer) are stable, so you don't always have to implement a duck type on them if it won't reduce your overall application costs.
+- Generaly, if creating a duck type would reduce unstable dependencies, do so. If not, it's up to you. Use your best judgement.
+- Changing base classes is known as monkey patching.
+- Most statically typed languages require that you explicitly declare the type of each variable and every method parameter. Dynamically typed languages omit this requirement.
+- Metaprogramming is like a scalpel. It confers great power and require great responsibility.
+- Dynamic typing allows you to trade compile time type checking, a serious restriction that has high cost and provides little value, for the huge gains in efficiency provided by removing the compile/make cycle. Most of the time it's worth it.

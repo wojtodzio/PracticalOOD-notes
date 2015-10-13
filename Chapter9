@@ -1,0 +1,65 @@
+- to write changeable code you must:
+  - Understand OOD. Changeability is the only design metric that matters. Code that's easy to change is well-designed
+  - Be skilled at refactoring code. Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code yet improves the internal structure. It's precise process that incrementally transforms one design into another
+  - Have an ability to write high-value tests. Efficient tests prove that altered code continues to behave correctly without raising overall costs. Good tests are written such that changes to the code do not force rewrites of the tests.
+- Well-designed code is easy to change, refactoring is how you change from one design to the next, and tests free you to refactor with impunity.
+- The most common arguments for having tests:
+  - They reduce bugs
+  - They provide documentation
+  - Writing tests first improves application design.
+- Getting good value from tests requires clarity of intention and knowing what, when, and how to test.
+- Fixing bugs early always lowers costs.
+- Tests provide the only reliable documentation of design.
+- Write your tests as if you except your future self to have amnesia. Remember that you will forget, and write tests that remind you of the story one you have.
+- When your tests depend on interfaces you can refactor the underlying code with reckless abandon.
+- Tests let you put off design decisions and create abstractions to any useful depth.
+- Tests expose design flaws in the underlying code.
+- If a test requires painful setup, the code excepts too much context.
+- If testing one object drags a bunch of others into the mix, the code has too many dependencies.
+- If the test is hard to write, other objects will find the code difficult to reuse.
+- When the design is bad, testing is hard, but costly tests do no necessarily mean that the application is poorly designed (tests have to be well-designed too).
+- Write loosely coupled tests about only the things that matter.
+- Removing duplication from testing lowers the cost of changing tests in reaction to application changes, and putting tests in the right place guarantees they'll be forced to change only when absolutely necessary.
+- Dealing with objects as if they are only and exactly the messages to which they respond lets you design a changeable application.
+- The design principles you are enforcing in your application apply to your tests as well.
+- Each test is merely another application object that needs to use existing class.
+- Tests you write should be for messages that are defined in public interfaces.
+- The most costly and least useful tests are those that couple to unstable internal details.
+- Tests should concentrate on the incoming and outgoing messages that cross the object's boundaries.
+- The incoming messages make up the public interface of te receiving object. The outgoing messages, are incoming into other objects, and so are part of some other object's interface.
+- Tests that make assertions about the value that messages return are tests of state. They commonly assert that the results returned by a message equal an expected value§.
+- The general rule is that objects should make assertions about state only for messages in their own public interfaces.
+- Queries are outgoing messages that have no side effects and thus matter only to their senders.
+- Queries need not be tested by the dending object. They're part of the public interface of their receiver, whichc already implements every necessary test of state.
+- Commands are outgoing messages that do have side effects, upon which your application depends.
+- In commands it is responsibility of the sending object to prove that they are properly sent. Thats are tests of the behavior, not state, and involves assertions about the nubmer of time, and with what arguments the message is sent.
+- Incoming messages should be tested for the state they return. Outgoing commang messages should be tested to ensure they get sent. Outgoing messages should not be tested.
+- As long as your application's objects deal with one another strictly via public interfaces, your tests need know nothing more.
+- As long as the public interface remain stable, you can write tests once and they will keep you safe forever.
+- Done at the correct time and in the right amounts, testing and writing code test-first will lower your overall costs.
+- BDD takes an outside-in approach, creating objects at the boundary of an application and working its way inward, mocking as necessary to supply as-yet-unwritten objects.
+- TDD takes an inside-out approach, usually starting with tests of domain objects and then reusing these newly created domain objects in the tests of adjecent layers of code.
+- Your tests must know things about object that you're testing, but should remain as ignorat as possible about others.
+- Do not test an incoming message that has no dependents; delete it. Unused code costs more to keep than to recover.
+- The first requirement for testing an incoming message is to prove that it returns the correct value in every possible situation.
+- When the code in your test uses the same collaborating objects as the code in your application, your tests always break when they should.
+- When the interface of a role changes, all playres of the role must adopt the new interface. It's easy to overlook role players that were constructed specifically for tests.
+- Roles need tests of their own.
+- Injecting doubles can speed tests but leave them vulnerable to causing situation where tests work but the application fails.
+- Outside-in approach of BDD provides more guidance than does TDD.
+- Reasons to omit tests of private methods:
+  - Such tests are redundant. Private methods are invoked by public methods that already have tests.
+  - Private methods are unstable. Change of private method will lead to change of their tests.
+  - Testing private methods can mislead others into using them. Tests works like a documentation, and testing private methods can encourage to depend on them.
+- An object with many private methods probably have to many responsibilities.
+- When your intention is to defer a design decision, do teh simplest thing that solves today's problem. Isolate the code behind the best interface you can cenceive and wait for more information.
+- In the same way the tests should ignore messages sent to self, they also should ingore outgoing query messages.
+- The responsibility for testing a message's return value lies with its receiver.
+- Mocks are tests of behavior, as opposed to tests of state. Instead of making assertions about what a message return, mocks define an expectation that a message will get sent.
+- In well-designed applications, testing outgoing messages is simple. If you have proactively injected dependencies, you can easily substitude mocks.
+- The desire to test duck types creates a need for shareable tests for roles.
+- From the point of view of the object under test, every other object is a role.
+- The easiest way to prove that every object in the hierarchy obeys Liskov is to write a shared test for the common contract and include this test in every object.
+- In inheritance write the shareable test for the overall interface and another for the subclass responsibilities.
+- The idea of creating a subclass to supply stubs can be helpful in many situations.
+- When testing abstract superclassess use the Liskov.

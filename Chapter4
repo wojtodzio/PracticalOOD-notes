@@ -1,0 +1,50 @@
+- There are many kind of interfaces:
+  - Interface within a class. They are class methods, that are meant to be used by others, and they make up its public interface
+  - Interface that spans across classes and that is independent of any single class. Used in this sense, it means set of messages where the messages themselves define the interface.
+- The methods, tkat make up the public interface of your class:
+  - Reveal its primary responsibility
+  - Are expected to be invoked by others
+  - Will not change on a whim
+  - Are safe for others to depend on
+  - Are thoroughly documented in the tests.
+- All other methods in the class are part of its private interface. They:
+  - Handle implementation details
+  - Are not expected to be sent by other objects
+  - Can change for any reason whatsover
+  - Are unsafe for others to depend on
+  - May not even be referenced in the tests.
+- Things, that are big, visible real-world and persistent are called domain objects (in another words, they are just nouns in description of application, that have both data and behavior). They are obvious, but they shouldn't be in at the design center of your application. You should focus on messages, that pass between them.
+- Seqence diagrams are perfect low-cost way to experiment with objects and messages.
+- The tranision from class-based design to message-based deign yields more flexible applications. First step in that direction is to change design fundamential question from "I know I need this class, what should it do?" to "I need to send this message, who should respond to it?".
+- You don't send messages because you have objects, you have objects because you send messages.
+- Objects that have simpler context, are easier to use and to test.
+- The best possible situation is for an object to be completely independent of its context - then it could collaborate with others without knowing who they are and what they do. One of techniques for that is dependency injection.
+- Switching your attention form objects to messages allows you to concentrate on designin application built upon public interfaces.
+- Every time you create a class, declare its interfaces.
+- Methods int the public interface should:
+  - Be explicitly idenfified as such
+  - Be more about 'what' than 'how'
+  - Have names that, insofar as you can anticipate, will not change
+  - Take a hash as an options parameter.
+- Make private interface obvious.
+- Either do not test private methods or, if you must, segregate those tests from the tests of public methods.
+- Private and protected methods are unstable. Public methods are stable.
+- Keywords (public, protected, private) don't deny access, they just make it a bit harder.
+  Using them sends two messages:
+  - You believe that you have better information today than programmers will have in the future
+  - You believe that those future programmers need to be prevented form accidentally using a method that you currently consider unstable.
+- You can ommit keywords and instead use comments or a special method naming convention (RoR adds a leading '_' for private methods).
+- Do you best to interact with other classes using only their public interfaces.
+- A dependency on a private method of an external framework is a form of technical debt, that you should avoid.
+- Depending on private interface increases risk, so if you must do it, isolate them.
+- Construct public interfaces with an eye toward minimizing the context they require from others.
+- Create public methods that allow senders to get what they want without knowing how your class implements its behavior.
+- The Law of Demeter (LoD) is a set of coding rules that results in loosely coupled objects.
+- Some Demeter violations are harmless, but others expose failure to correctly identify and define public interfaces.
+- Demeter restrics the set of objects to which a method may send messages - it prohibits routing a message to a third object via a second object of a different type. It's often paraphrased as "use only one dot".
+- Sometimes it's better to violate LoD.
+- Risk incurred by LoD violations for stable attributes is low, as long as you are not chaning the value of the attribute you retrive.
+- One common way to remove "train wrecks" is to use delegations.
+- To delegate a message is to pass it to another object, often via wrapper method. It's sometimes useful, but it can hide coupling of the code instead of help decoupling.
+- The train wrecks of Demeter violations are clues, that there are objects, whose public interfaces are lacking.
+- If you shift to a message-based perspective, the message you find will become public interface in the objects they lead to discover.

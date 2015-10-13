@@ -1,0 +1,23 @@
+- Single responsibility of classes necessitates that they collaborate with other classes. To do it, object must know something about others - it creates dependency.
+- In other words, an object depends on another if, when one object changes, the other might be forced to change in turn.
+- An object has dependency when it knows:
+  - The name of another class
+  - The name of message that it intends to send to someone other than self
+  - The argument that a message requires
+  - The order of those arguments.
+- Dependencies should be concise, explict and isolated.
+- If you cannot change code to inject dependency, you should isolate the creation of it. The intent is to expose it while reducing its reach into your class.
+- For methods with long and unstable parameter list (framework), use arugments hash. For methods, that have simple and short parameter list (like dividing two numbers), accept dependency on order. For methods somewhere between, with a few very stable arguments and same optionals, unstable ones, you better use both method: take a few fixed-order arguments, followed by an options hash.
+- The classes in your application should depend on code that you own, so use a wrapping method to isolate external dependencies.
+- If your defaults are more than simple numbers or strings, implement a defaults method.
+- (In Ruby) Using || when setting defaults doesn't distinguish between false and nil. When you allow boolean values, it's better to use fetch method.
+- (In Ruby) Using a module (e.g. Wrapper) lets you define separate and distinct object to which you can send message, while conveying the idea, that you dont's expect to have instances of that module (of our Wrapper). I.e. You can use modules as something, that won't have instances of itself, but will be useful for you.
+- Object, whose purpose is to create other objects is called a factory.
+- When you are forced to depend on external interfaces that you cannot change, wrap dependencies in your own code; you can e.g. substitute an options hash for a list of fixed-order arguments in that way.
+- Three simple thruths about code:
+  - Some classes are more likely than others to have changes in requirements
+  - Concrete classes are more likely to change than abstract classes
+  - Changing a class that has many dependents will result in widespread consequences.
+- When choosing the direction of dependencies, you should rank your classes along scale of how likely it is to undergo a change relative to all other classes. Classes should depend on things that change less often than they do.
+- The term abstract is used as "disassociated from any specyfic instance".
+- Interafces can have dependents and so must be taken into account during design.

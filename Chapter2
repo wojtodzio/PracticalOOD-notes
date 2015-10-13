@@ -1,0 +1,15 @@
+- OOD is more about creating something, that will be easy to change in the future, than achieving perfection.
+- Code should be TRUE:
+  - Transparent: The consequences of change should be obvious in the code that is changing and in distant code, that relies upon it
+  - Reasonable: The cost of any change should be proportional to the benefits the change achieves
+  - Usable: Existing code should be usable in new and unexpectd contexts
+  - Examplary: The code itself should encourage those who change it to perpetuate these qualities.
+- In TRUE code, each class should have a single, well-defined responsibility.
+- Instance variables should always be wrapped in accessor methods. When you need to change samething in it (e.g. name of variable, or change cm to mm) it's much easier to change it just in accessor, than to refactor the whole code.
+- Separating iterations from the action, that's being performed on each element could help you split one method, that have multiple responibilities to couple of methods, which have one responsibility each.
+- Single responsibility methods:
+  - Makes set of things the class does more obvious
+  - Help you to avoid comments - methods names serves the same purpose
+  - Are easily reusable
+  - Are easy to move to another class.
+- Separate classes with many responsibilities into different classes. If you cannot remove extra responsibilities, isolate them.

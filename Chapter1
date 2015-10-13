@@ -1,0 +1,5 @@
+- It's all about perspective you are looking from. OOD requires you to shift from thinking of the world as a collection of predefined procedures to modeling the world as a series of messages that pass between objects.
+- Objects should be independant of each other as much as it is possible - that means, objects shouldn't know much much about another objects, i.e. they shouldn't share the same data set, shouldn't know much about logic, that stands behind another objects methods etc.
+- In Ruby everything is an object, including objects themselfs and classes, which works as blueprints for objects.
+- http://agilemanifesto.org/
+- Agile movement centre upon building software incrementally and interactions with clients within entire development process, which leads to product that may hardly differ from first concept, but will completely fulfill its purpose and will met client expectations. The core principle is to satisfy the customer by delivering working software frequently, showing it to customer, applying his feedback and so on.

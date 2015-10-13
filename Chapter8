@@ -1,0 +1,36 @@
+- Composition is the act of combining distinct parts into a complex whole such that the whole becomes more than the sum of its parts. (e.g. Music is made of notes, but as a result it's more than simply a sum of notes).
+- (Ruby) You can extend Forwardable, and then do e.g. 'def_delegators :@parts, :size, :each'.
+- You can contain knowledge previously dispersed throughout the application in Factory.
+- (Ruby) OpenStruct is a Struct, that takes a hash for its initialization.
+- A composed object is made up of parts with which it expects to interact via well-defined interfaces.
+- Delegation is when one object receives a message and forwards it to another.
+- Composition describes a has-a relationship.
+- The composed object depends on the interfae of the role.
+- In most cases composition indicate nothing more than general has-a relationship between two objects. However, as formally defined it means a has-a relationship where the contained object has no life independent of its container.
+- Aggregation is exactly like composition except that the contained object has an independent life.
+- In inheritance for the cost of arranging objects in a hirarchy, you get message delegation for free. Composition is an alternative that reverses these costs and benefits - the relationship between objects is not codified in the class hierarchy, instead objects stand alone and as result must explicitly know about and delegate messages to one another.
+- The general rule is that, faced with a problem that composition can solve, you should be biased towards doing so. If you cannot explicitly defend inheritance as a better solution, use composition. Inheritance is a better solution when its use provides high rewards for low risk.
+- Inheritance, when correctly applied excels code reasonability, usability and exemplarity:
+  - Reasonable: big changes in behavior can be achived via small changes in superclass
+  - Usable: inheritance results in code that can be described as open-closed - hierarchies are open for extension while remaining closed for modification. Adding a new subclass to an existing hierarchy requires no changes to existing code
+  - Exemplary: correctly written hierarchies are easy to extend. The exisiting pattern is easy to follow and replicating.
+- You may choose inheritance to solve the wrong kind of problem: in some point there will be no easy way to add behavior.
+- The greates streangth of inheritance can be its greates weakness. Subclasses are bound to their superclasses. As a result of these built-in dependencies, enormous, broad-reaching changes of behavior can be achieved with very small changes in code.
+- In contrast to inheritance, composited objects do not depend on the structure of the class hierarchy, and they delegate their own messages.
+- When using composition, the natural tendency is to create many small objects that contain straightforward responsibilities that are accessible through clearly defined interfaces.
+- Composition, when correctly applied excels to:
+  - Transparency: these small objects have a single responsibility and specify their own behavior. It's easy to understand the code and it's clear what will happen if it changes. Also, the composed object's independence from the hierarchy means that it's generally immune from suffering side effects as a result of changes to classes above it in hierarchy
+  - Reasonable: becouse composed objects deal with their parts via an interface, adding a new kind of part is a simple matter of plugging in a new object that honors the interface. Adding a new variant of an exisitng part requires no changes to its code
+  - Usable: by their very nature, objects that participate in composition are small, structuallly independent, and have well-defined interfaces. Well-composed objects are therefore easily usable in new and unexpected contexts.
+- A composed object relies on its many parts. The comibined operations of the whole may be less than obvious, so while every individual part may indeed be transparent, the whole may not be.
+- The benefits of structural independence are gained at the cost of automatic message delegation.
+- Identical delegation code may be needed by many different objects - composition provides no way to share the code.
+- Composition is excellent at prescribing rules for assembling an object made of parts but doesn't provide as much help for the problem of arranging code for a collection of parts that are very nearly identical.
+- Advices when to use inheritance and composition:
+  - Inheritane is specialization
+  - Inheritance is best suited to adding functionally to existing classes when you will use most of the old code and add relatively small amount of new code
+  - Use composition when the bahavior is more than the sum of its parts.
+- Small sets of real-world objects that fall naturally into static, transparently obvious specialization hierarchies are candidates to be modeled using classical inheritance.
+- The role is not the object's main responsibility.
+- At the core of deciding between inheritance and composition is is-a versus has-a distinction. The more parts an object has, the more likely it is that it should be modeled with composition. The deeper you drill down into individual parts, the more likely it is that you should use inheritance.
+- For every problem, asssess the costs and benefits of alternative design techniques and use your judgement and experience to make the best choice.

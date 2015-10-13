@@ -1,0 +1,18 @@
+- Inheritance is a mechanism for automatic message delegation. It defines a path for non-understood messages. If one object cannot respond to a received message, it delegates that message to another.
+- Word like type or category could be cue to notice a new class / subclass.
+- Subclasses are specializations of their superclasses.
+- Creating a hierarchy has costs, and the best way to minimize these costs is to get the best possible abstracion - you should delay it as long as it's possible.
+- It's easier to promote code up to a superclass than to demote it down to a subclass. The general rule for refactoring into a new inheritance hierarchy is to arrange code so that you can promote abstractions rather than demote concretions.
+- Every decision you make includes two costs:
+  - To implement it
+  - To change it when you discover that you were wrong.
+- The template method pattern is a technique of defining a basic structure in the superclass and sending messages to acquire subclass-specific contributions.
+- Every class that uses the template method pattern must supply an implementation for every message it sends.
+- Explicitly stating that subclasses are required to implement a message provides useful documentation.
+- Always document template method requirements by implementing matching methods that raise useful errors.
+- Creating code that fails with reasonable error messages takes minor effort in the present but provides value forever.
+- It is attention to detail (like error messages) that marks you as a serious programmer.
+- Managing coupling is important. Tightly coupled classes stick together and may be impossible to change independently.
+- When a subclass sends super it's effectively declaring that it knows the algorithm and so it depends on this knowledge. If the algorithm changes, then the subclasses may break even if their own specializations are not otherwise affected.
+- Instead of requiring subclasses to send super, superclasses can send hook messages. They exist to provide subclasses a place to contribute information by implementing matching methods. This strategy removes knowledge of the algorithm from the subclass.
+- When the hierarchy is correct, anyone can successfully create a new subclass.
